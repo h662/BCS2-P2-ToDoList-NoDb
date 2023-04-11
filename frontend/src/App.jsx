@@ -1,6 +1,7 @@
 import axios from "axios";
 import TodoCard from "./components/TodoCard";
 import { useEffect, useState } from "react";
+import CreateTodo from "./components/CreateTodo";
 
 function App() {
   const [toDoList, setToDoList] = useState();
@@ -38,24 +39,14 @@ function App() {
           나무 베는데 한 시간이 주어진다면, 도끼를 가는데 45분을 쓰겠다,
           에비브러햄 링컨
         </div>
-        <form className="flex mt-2">
-          <input
-            className="grow border-2 border-pink-200 rounded-lg focus:outline-pink-400 px-2 py-1 text-lg"
-            type="text"
-          />
-          <input
-            className="ml-4 px-2 py-1 bg-pink-400 rounded-lg text-gray-50"
-            type="submit"
-            value="새 투두 생성"
-          />
-        </form>
+        <CreateTodo getToDoList={getToDoList} />
       </div>
       <div className="mt-16 flex flex-col w-1/2">
         {toDoList
           ? toDoList.map((v, i) => {
               return <TodoCard key={i} isDone={v.isDone} title={v.title} />;
             })
-          : ""}
+          : "로딩중입니다..."}
       </div>
     </div>
   );
