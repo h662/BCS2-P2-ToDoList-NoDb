@@ -44,7 +44,15 @@ function App() {
       <div className="mt-16 flex flex-col w-1/2">
         {toDoList
           ? toDoList.map((v, i) => {
-              return <TodoCard key={i} isDone={v.isDone} title={v.title} />;
+              return (
+                <TodoCard
+                  key={i}
+                  isDone={v.isDone}
+                  title={v.title}
+                  index={i}
+                  getToDoList={getToDoList}
+                />
+              );
             })
           : "로딩중입니다..."}
       </div>
