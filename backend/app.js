@@ -1,12 +1,14 @@
 const express = require("express");
+const cors = require("cors");
 const todoRouter = require("./routes/todo");
 
 const app = express();
 
-const port = 3010;
+const port = 3020;
 
+app.use(cors());
 app.use(express.json());
-app.use("/user", todoRouter);
+app.use("/todo", todoRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello, Express!");
